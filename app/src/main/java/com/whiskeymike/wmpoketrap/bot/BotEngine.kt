@@ -39,7 +39,7 @@ class BotEngine(private val appContext: Context) {
         if (job?.isActive == true) return
         val svc = TrapAccessibilityService.instance
         if (svc == null) {
-            publish { it.copy(status = "Enable Accessibility for WM PokeTrap first") }
+            publish { it.copy(status = "Enable Accessibility for WMMods first") }
             return
         }
         // Farm and WN never run together.

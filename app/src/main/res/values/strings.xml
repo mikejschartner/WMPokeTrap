@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WM PokeTrap</string>
-    <string name="accessibility_desc">WM PokeTrap needs Accessibility so it can tap Fight / Run / moves and read the battle screen while you farm.</string>
+    <string name="app_name">WMMods</string>
+    <string name="accessibility_desc">WMMods needs Accessibility so it can tap Fight / Run / moves and read the battle screen while you farm.</string>
 </resources>

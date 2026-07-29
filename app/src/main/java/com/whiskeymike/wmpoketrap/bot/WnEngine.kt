@@ -36,7 +36,7 @@ class WnEngine(private val appContext: Context) {
         if (job?.isActive == true) return
         val svc = TrapAccessibilityService.instance
         if (svc == null) {
-            publish { it.copy(status = "Enable Accessibility for WM PokeTrap first", mode = "wn") }
+            publish { it.copy(status = "Enable Accessibility for WMMods first", mode = "wn") }
             return
         }
         BotEngine.get(appContext).stop()

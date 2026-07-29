@@ -54,7 +54,7 @@ class OverlayService : Service() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        startForeground(42, buildNotification("WM PokeTrap ready"))
+        startForeground(42, buildNotification("WMMods ready"))
         showOverlay()
         collectJob = scope.launch {
             val farm = BotEngine.get(this@OverlayService).stats
@@ -432,7 +432,7 @@ class OverlayService : Service() {
         val channelId = "wm_poketrap_overlay"
         val nm = getSystemService(NotificationManager::class.java)
         nm.createNotificationChannel(
-            NotificationChannel(channelId, "WM PokeTrap Overlay", NotificationManager.IMPORTANCE_LOW),
+            NotificationChannel(channelId, "WMMods Overlay", NotificationManager.IMPORTANCE_LOW),
         )
         val open = PendingIntent.getActivity(
             this,
@@ -441,7 +441,7 @@ class OverlayService : Service() {
             PendingIntent.FLAG_IMMUTABLE,
         )
         return NotificationCompat.Builder(this, channelId)
-            .setContentTitle("WM PokeTrap")
+            .setContentTitle("WMMods")
             .setContentText(text)
             .setSmallIcon(R.drawable.ic_launcher)
             .setContentIntent(open)

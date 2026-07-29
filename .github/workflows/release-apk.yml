@@ -79,7 +79,7 @@ jobs:
           body: |
             versionCode=${{ steps.ver.outputs.version_code }}
 
-            WM PokeTrap ${{ steps.ver.outputs.version_name }}
+            WMMods ${{ steps.ver.outputs.version_name }}
 
             - Auto-built by GitHub Actions
             - Install over previous build (keeps settings)

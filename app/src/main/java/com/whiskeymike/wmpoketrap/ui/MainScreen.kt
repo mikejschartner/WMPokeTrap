@@ -102,8 +102,8 @@ fun MainScreen(
                 contentScale = ContentScale.Fit,
             )
             Column {
-                Text("WHISKEY MIKE'S", color = Purple, fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                Text("WM POKETRAP", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Text("WMMODS", color = Purple, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                Text("PHONE", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 Text(
                     "Phone farming • WN giveaways • Accessibility taps",
                     color = Muted,
@@ -816,7 +816,7 @@ private fun SetupTab(
         Spacer(modifier = Modifier.height(12.dp))
         Text(
             "How to use:\n" +
-                "1) Enable Accessibility for WM PokeTrap\n" +
+                "1) Enable Accessibility for WMMods\n" +
                 "2) Allow overlay permission\n" +
                 "3) Calibrate regions/points in battle\n" +
                 "4) Pick target Pokémon\n" +

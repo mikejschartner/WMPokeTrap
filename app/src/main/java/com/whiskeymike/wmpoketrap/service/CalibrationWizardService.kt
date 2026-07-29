@@ -370,7 +370,7 @@ class CalibrationWizardService : Service() {
         val channelId = "wm_poketrap_calibrate"
         val nm = getSystemService(NotificationManager::class.java)
         nm.createNotificationChannel(
-            NotificationChannel(channelId, "WM PokeTrap Calibrate", NotificationManager.IMPORTANCE_LOW),
+            NotificationChannel(channelId, "WMMods Calibrate", NotificationManager.IMPORTANCE_LOW),
         )
         val open = PendingIntent.getActivity(
             this,
@@ -379,7 +379,7 @@ class CalibrationWizardService : Service() {
             PendingIntent.FLAG_IMMUTABLE,
         )
         return NotificationCompat.Builder(this, channelId)
-            .setContentTitle("WM PokeTrap")
+            .setContentTitle("WMMods")
             .setContentText(text)
             .setSmallIcon(R.drawable.ic_launcher)
             .setContentIntent(open)

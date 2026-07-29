@@ -16,8 +16,8 @@ android {
         applicationId = "com.whiskeymike.wmpoketrap"
         minSdk = 30
         targetSdk = 34
-        versionCode = 28
-        versionName = "1.3.24"
+        versionCode = 29
+        versionName = "1.3.25"
         buildConfigField("String", "UPDATE_OWNER", "\"mikejschartner\"")
         buildConfigField("String", "UPDATE_REPO", "\"WMPokeTrap\"")
     }
