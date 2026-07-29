@@ -47,7 +47,10 @@ jobs:
         shell: bash
         run: |
           mkdir -p release
-          APK=$(find app/build/outputs/apk -name '*.apk' | head -1)
+          # app/build.gradle.kts redirects build dir to java.io.tmpdir/wmpoketrap-app-build
+          TMP_ROOT="${TMPDIR:-/tmp}"
+          APK=$(find "$TMP_ROOT/wmpoketrap-app-build" app/build/outputs -name '*.apk' 2>/dev/null | head -1)
+          echo "Found APK: $APK"
           test -n "$APK"
           cp "$APK" release/WMPokeTrap.apk
           printf '{\n  "versionCode": %s,\n  "versionName": "%s"\n}\n' \
