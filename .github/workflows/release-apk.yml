@@ -47,11 +47,29 @@ jobs:
         shell: bash
         run: |
           mkdir -p release
-          # app/build.gradle.kts redirects build dir to java.io.tmpdir/wmpoketrap-app-build
-          TMP_ROOT="${TMPDIR:-/tmp}"
-          APK=$(find "$TMP_ROOT/wmpoketrap-app-build" app/build/outputs -name '*.apk' 2>/dev/null | head -1)
+          # app/build.gradle.kts: layout.buildDirectory = java.io.tmpdir/wmpoketrap-app-build
+          JAVA_TMP=$(java -XshowSettings:properties -version 2>&1 | awk -F' = ' '/java\.io\.tmpdir/ {print $2; exit}' | tr -d '\r')
+          echo "JAVA_TMP=$JAVA_TMP TMPDIR=${TMPDIR:-} RUNNER_TEMP=${RUNNER_TEMP:-}"
+          APK=""
+          for root in \
+            "$JAVA_TMP/wmpoketrap-app-build" \
+            "${TMPDIR:-/tmp}/wmpoketrap-app-build" \
+            "${RUNNER_TEMP:-}/wmpoketrap-app-build" \
+            "/tmp/wmpoketrap-app-build" \
+            "app/build/outputs"
+          do
+            [ -n "$root" ] || continue
+            [ -d "$root" ] || continue
+            echo "Searching $root"
+            APK=$(find "$root" -name '*.apk' -print -quit || true)
+            [ -n "$APK" ] && break
+          done
           echo "Found APK: $APK"
-          test -n "$APK"
+          if [ -z "$APK" ]; then
+            echo "APK not found; listing candidate roots:"
+            ls -la "$JAVA_TMP" "${TMPDIR:-/tmp}" "${RUNNER_TEMP:-}" /tmp 2>/dev/null || true
+            exit 1
+          fi
           cp "$APK" release/WMPokeTrap.apk
           printf '{\n  "versionCode": %s,\n  "versionName": "%s"\n}\n' \
             "${{ steps.ver.outputs.version_code }}" \
