@@ -1,0 +1,26 @@
+# Local / IDE
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+.cxx/
+.externalNativeBuild/
+captures/
+
+# Build outputs
+/build/
+app/build/
+*.apk
+*.ap_
+*.dex
+
+# Tools caches (optional local)
+tools/MinGit/
+tools/MinGit.zip
+tools/gh/
+
+# Release staging (generated)
+release/*.apk
+# keep release/ folder structure if needed — ignore generated binaries
+WMPokeTrap-debug.apk
