@@ -3,7 +3,10 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-layout.buildDirectory.set(file(System.getProperty("java.io.tmpdir") + "/wmpoketrap-app-build"))
+// OneDrive locks files under app/build on Windows; CI/Linux keep the default path.
+if (System.getProperty("os.name").orEmpty().lowercase().contains("windows")) {
+    layout.buildDirectory.set(file(System.getProperty("java.io.tmpdir") + "/wmpoketrap-app-build"))
+}
 
 android {
     namespace = "com.whiskeymike.wmpoketrap"
